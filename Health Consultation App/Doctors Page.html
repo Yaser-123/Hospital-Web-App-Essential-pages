@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Doctor - Health Consultation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Select Doctor</h2>
+        <button class="button" onclick="selectDoctor('Doctor 1')">Doctor 1</button>
+        <button class="button" onclick="selectDoctor('Doctor 2')">Doctor 2</button>
+        <button class="button" onclick="selectDoctor('Doctor 3')">Doctor 3</button>
+    </div>
+
+    <script>
+        function selectDoctor(doctor) {
+            window.location.href = 'book-appointment.html?doctor=' + encodeURIComponent(doctor);
+        }
+    </script>
+</body>
+</html>

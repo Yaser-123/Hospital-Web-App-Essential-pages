@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Consultation App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+        }
+        .button {
+            background-color: #007BFF;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            margin: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Health Consultation App</h1>
+        <button class="button" onclick="handleEmergency()">Emergency Consultation</button>
+        <button class="button" onclick="handleNormalConsultation()">Normal Consultation</button>
+    </div>
+
+    <script>
+        function handleEmergency() {
+            // Redirect to Zoom meeting for emergency
+            window.location.href = 'zoom-meeting-url'; // Replace with actual Zoom meeting URL
+        }
+
+        function handleNormalConsultation() {
+            // Redirect to login page for normal consultation
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment - Health Consultation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        input[type="text"], input[type="date"], input[type="time"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Book Appointment</h2>
+        <form id="appointmentForm">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="date">Appointment Date</label>
+            <input type="date" id="date" name="date" required>
+            
+            <label for="time">Appointment Time</label>
+            <input type="time" id="time" name="time" required>
+            
+            <button class="button" type="submit">Book Appointment Now</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('appointmentForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Collect form data
+            const name = document.getElementById('name').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            
+            // Validate form data (optional)
+            if (!name || !date || !time) {
+                alert('Please fill out all fields.');
+                return;
+            }
+            
+            // Data to be sent to the server
+            const appointmentData = {
+                name: name,
+                date: date,
+                time: time
+            };
+            
+            // Send data to the server (use your backend URL here)
+            fetch('your-backend-url', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(appointmentData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Appointment booked successfully!');
+                    
+                    // Redirect to Zoom meeting URL
+                    window.location.href = 'zoom-meeting-url'; // Replace with actual Zoom meeting URL
+                } else {
+                    alert('Failed to book appointment.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while booking the appointment.');
+            });
+        });
+    </script>
+</body>
+</html>
